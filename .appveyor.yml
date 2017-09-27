@@ -42,6 +42,7 @@ before_build:
 - copy jreq.dll ..
 - copy jreq.xcfg ..
 - copy jreq.xlcl ..
+- cd ..
 
 after_build:
 - mkdir %dir% || exit 1
