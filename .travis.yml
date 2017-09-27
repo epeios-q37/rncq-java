@@ -21,7 +21,7 @@ script:
 - git clone https://github.com/epeios-q37/jreq.git
 - pushd jreq
 - make -j
-- cp jreq.so jreq.dylib jreq.xcfg jreq.xlcl ..
+- cp libjreq.so libjreq.dylib jreq.xcfg jreq.xlcl ..
 - popd
 - make -j
 - java -Djava.library.path=. RNCqDemo
