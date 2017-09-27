@@ -24,7 +24,7 @@ script:
 - cp libjreq.so libjreq.dylib jreq.xcfg jreq.xlcl ..
 - popd
 - make -j
-- java -Djava.library.path=. RNCqDemo
+- java -Djava.library.path=. RNCqTest
 
 # To disable building on tags. Tags are supposed to begin with 'v' and only containing digits.
 branches:

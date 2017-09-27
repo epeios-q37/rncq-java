@@ -26,7 +26,7 @@ test_script:
 - set JDK="Program Files%oddity%/Java/jdk%jdk_ver%/bin/"
 - echo %JDK%
 - C:/%JDK%javac src/*.java -d .
-- C:/%JDK%java RNCqDemo
+- C:/%JDK%java RNCqTest
 # - java -Djava.library.path=x64/Release RNCqDemo
 
 # matrix:
@@ -45,7 +45,7 @@ before_build:
 
 after_build:
 - mkdir %dir% || exit 1
-- cp %affix%jre.%ext% %dir%\%affix%jre_%platform%.%ext% || exit 1
+- copy %affix%jre.%ext% %dir%\%affix%jre_%platform%.%ext% || exit 1
 - 7z a %zip% %dir%
 
 artifacts:
