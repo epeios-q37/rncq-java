@@ -38,7 +38,7 @@ skip_tags: true
 before_build:
 - git clone https://github.com/epeios-q37/jreq.git
 - cd jreq
-- msbuild jreq.vxproj
+- msbuild jreq.vcxproj
 - copy jreq.dll jreq.xcfg jreq.xlcl ..
 
 after_build:
