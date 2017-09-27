@@ -1,0 +1,66 @@
+environment:
+  version: 20170927
+  affix: rncq
+  ext: dll
+  dir: $(affix)-java-v$(version)
+  zip: $(affix)jre-v$(version)-win-java-v$(jdk_ver)-$(platform).zip
+  matrix:
+    - jdk_ver: "1.8.0"
+    - jdk_ver: "1.7.0"
+    - jdk_ver: "1.6.0"
+
+platform:
+- x86
+- x64
+
+configuration: Release
+
+os :
+- Visual Studio 2017
+# - Visual Studio 2015
+# - Visual Studio 2013
+
+test_script:
+- set oddity=
+- if "%platform%"=="x86" set oddity= (x86)
+- set JDK="Program Files%oddity%/Java/jdk%jdk_ver%/bin/"
+- echo %JDK%
+- C:/%JDK%javac src/*.java -d .
+- C:/%JDK%java RNCqDemo
+# - java -Djava.library.path=x64/Release RNCqDemo
+
+# matrix:
+  # allow_failures:
+  # - os: Visual Studio 2017
+
+skip_tags: true
+
+before_build:
+- git clone https://github.com/epeios-q37/jreq.git
+- cd jreq
+- msbuild jreq.vxproj
+- copy jreq.dll jreq.xcfg jreq.xlcl ..
+
+after_build:
+- mkdir %dir% || exit 1
+- cp %affix%jre.%ext% %dir%\%affix%jre_%platform%.%ext% || exit 1
+- 7z a %zip% %dir%
+
+artifacts:
+- path: $(zip)
+
+deploy:
+  tag: v$(version)
+  description: ''
+  provider: GitHub
+  auth_token:
+    secure: kKebvPLjikQbZ7E1Vm8omoYc9K0wOcKxjWsglp3+D4fV9ev/FaWr8ZBI+AseOTis
+  draft: false
+  prerelease: false
+  on:
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+#    platform: Win32
+
+#  on:
+#    branch: master                 # release from master branch only
+#    appveyor_repo_tag: true        # deploy on tag push only
