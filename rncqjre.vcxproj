@@ -21,7 +21,7 @@
   <Import Project="Windows.targets"/>
   <Import Project="Details.props"/>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>88c34e42-f7d3-49ca-8608-325261df4de9</ProjectGuid>
+    <ProjectGuid>b683defb-1a36-4c81-869a-f406ab8f4471</ProjectGuid>
     <RootNamespace>rncqjre</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
@@ -106,6 +106,7 @@
     <ClCompile Include="src/epeios/sdr.cpp"/>
     <ClCompile Include="src/epeios/stkbse.cpp"/>
     <ClCompile Include="src/epeios/stkbch.cpp"/>
+    <ClCompile Include="src/epeios/stkcrt.cpp"/>
     <ClCompile Include="src/epeios/stkctn.cpp"/>
     <ClCompile Include="src/epeios/str.cpp"/>
     <ClCompile Include="src/epeios/strng.cpp"/>
@@ -120,6 +121,7 @@
     <ClCompile Include="src/epeios/wllio.cpp"/>
     <ClCompile Include="src/epeios/dlbrry.cpp"/>
     <ClCompile Include="src/epeios/n4all.cpp"/>
+    <ClCompile Include="src/epeios/n4jre.cpp"/>
     <ClCompile Include="src/epeios/plgn.cpp"/>
     <ClCompile Include="src/epeios/plgncore.cpp"/>
     <ClCompile Include="src/epeios/tht.cpp"/>
