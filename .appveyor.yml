@@ -44,7 +44,7 @@ before_build:
 - set JDK="Program Files%oddity%/Java/jdk%jdk_ver%/bin/"
 - echo %JDK%
 - C:/%JDK%javac src/*.java -d .
-- echo "***** 'JREq' TEST BEGIN *****" && C:/%JDK%java JREqTest && echo "***** 'jreq' TEST END *****"
+- echo "***** 'JREq' TEST BEGIN *****" && C:/%JDK%java JREqTest && echo "***** 'JREq' TEST END *****"
 - cd ..
 
 after_build:
