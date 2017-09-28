@@ -22,7 +22,7 @@ script:
 - pushd jreq
 - make -j
 # - java -Djava.library.path=. JREqTest
-- cp libjreq.so libjreq.dylib jreq.xcfg jreq.xlcl ..
+- cp libjreq.* jreq.xcfg jreq.xlcl *.class ..
 - popd
 - java JREqTest
 - make -j

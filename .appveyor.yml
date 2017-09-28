@@ -21,8 +21,13 @@ os :
 # - Visual Studio 2013
 
 test_script:
+- set oddity=
+- if "%platform%"=="x86" set oddity= (x86)
+- set JDK="Program Files%oddity%/Java/jdk%jdk_ver%/bin/"
+- echo %JDK%
 - C:/%JDK%javac src/*.java -d .
 # - C:/%JDK%java RNCqTest
+- echo "***** 'JREq' TEST BEGIN *****" && C:/%JDK%java JREqTest && echo "***** 'jreq' TEST END *****"
 - echo "********** 'RNCq' TEST BEGIN **********" && C:/%JDK%java RNCqTest && echo "\n********** 'RNCq' TEST END **********"
 # - java -Djava.library.path=x64/Release RNCqDemo
 
@@ -40,11 +45,6 @@ before_build:
 - copy jreq.xcfg ..
 - copy jreq.xlcl ..
 - cd ..
-- set oddity=
-- if "%platform%"=="x86" set oddity= (x86)
-- set JDK="Program Files%oddity%/Java/jdk%jdk_ver%/bin/"
-- echo %JDK%
-- echo "***** 'JREq' TEST BEGIN *****" && C:/%JDK%java JREqTest && echo "***** 'jreq' TEST END *****"
 
 after_build:
 - mkdir %dir% || exit 1
