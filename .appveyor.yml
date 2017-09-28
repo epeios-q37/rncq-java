@@ -1,5 +1,5 @@
 environment:
-  version: 20170927
+  version: 20170928
   affix: rncq
   ext: dll
   dir: $(affix)-java-v$(version)
@@ -26,7 +26,8 @@ test_script:
 - set JDK="Program Files%oddity%/Java/jdk%jdk_ver%/bin/"
 - echo %JDK%
 - C:/%JDK%javac src/*.java -d .
-- C:/%JDK%java RNCqTest
+# - C:/%JDK%java RNCqTest
+- echo "********** 'RNCq' TEST BEGIN **********" && C:/%JDK%java RNCqTest && echo "\n********** 'RNCq' TEST END **********"
 # - java -Djava.library.path=x64/Release RNCqDemo
 
 # matrix:
@@ -43,6 +44,7 @@ before_build:
 - copy jreq.xcfg ..
 - copy jreq.xlcl ..
 - cd ..
+- echo "***** 'JREq' TEST BEGIN *****" && C:/%JDK%java JREqTest && echo "***** 'jreq' TEST END *****"
 
 after_build:
 - mkdir %dir% || exit 1

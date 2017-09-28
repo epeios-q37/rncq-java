@@ -44,19 +44,31 @@ class JREq extends Decl {
 	static
 	{
   String location = ".";
+  String osName = System.getProperty("os.name").toLowerCase();
+  String prefix = "";
 
  	System.loadLibrary( "jreq" );
 
   if ( System.getenv( "EPEIOS_SRC" ) != null ) {
-   if ( System.getProperty("os.name").startsWith( "Windows" ) )
+   if ( osName.contains( "windows" ) )
     location = "h:/bin";
-   else
-    location = "~/bin";
+   else if ( osName.contains( "mac" ) ) {
+    location = "/Users/bin";
+    prefix = "lib";
+   } else {
+    location = "/home/csimon/bin";
+    prefix= "lib";
+   }
   }
 
  	init( location );
-  register( Decl.affix + "jre");
- }
+  register( "./" + prefix + Decl.affix + "jre");
+/*
+  try {
+  System.out.println(new java.io.File(RNCqTest.class.getClassLoader().getResource(RNCqTest.class.getCanonicalName().replace('.', '/') + ".class").toURI()).getParent());
+  } catch (Exception e){}
+ */
+  }
 }
 // End of generic part.
 

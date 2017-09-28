@@ -21,11 +21,13 @@ script:
 - git clone https://github.com/epeios-q37/jreq.git
 - pushd jreq
 - make -j
-- java -Djava.library.path=. JREqTest
+# - java -Djava.library.path=. JREqTest
+- JREqTest
 - cp libjreq.so libjreq.dylib jreq.xcfg jreq.xlcl ..
 - popd
 - make -j
-- java -Djava.library.path=. RNCqTest
+# - java -Djava.library.path=. RNCqTest
+- java RNCqTest
 
 # To disable building on tags. Tags are supposed to begin with 'v' and only containing digits.
 branches:
