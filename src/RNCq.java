@@ -43,22 +43,24 @@ class JREq extends JREqDecl {
 
 	static
 	{
-  String location = ".";
+  String location = "";
   String osName = System.getProperty("os.name").toLowerCase();
   String prefix = "";
 
  	System.loadLibrary( "jreq" );
 
-  if ( System.getenv( "EPEIOS_SRC" ) != null ) {
-   if ( osName.contains( "windows" ) )
-    location = "h:/bin";
-   else if ( osName.contains( "mac" ) ) {
-    location = "/Users/bin";
-    prefix = "lib";
-   } else {
-    location = "/home/csimon/bin";
-    prefix= "lib";
-   }
+  if ( osName.contains( "windows" ) )
+   location = "h:/bin";
+  else if ( osName.contains( "mac" ) ) {
+   location = "/Users/bin";
+   prefix = "lib";
+  } else {
+   location = "/home/csimon/bin";
+   prefix= "lib";
+  }
+
+  if ( System.getenv( "EPEIOS_SRC" ) == null ) {
+   location = ".";
   }
 
  	init( location );
